@@ -47,7 +47,6 @@ class DeviceNameList(BaseAction):
             "custom_fields_and": custom_fields_and,
             "custom_fields_or": custom_fields_or,
         })
-        print(response)
 
         names = []
         for device in response["Devices"]:
