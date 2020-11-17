@@ -9,7 +9,7 @@ class GetDnsZone(BaseAction):
             nameserver=None, content=None, tags=None,
             tags_and=None
             ):
-        response = self.getAPI("/api/1.0/dns/records/", {
+        response = self.getAPI("dns/records/", {
             "domain": domain,
             "type": record_type,
             "name": name,
@@ -32,12 +32,12 @@ class GetDnsZone(BaseAction):
                     )
                     n = zone.get_rdataset(record["name"], rdtype, create=True)
                     n.add(rdata, record["ttl"])
-                except Exception, e:
-                    print "Error: %s" % e.message
-                    print "Record Name: %s" % record["name"]
-                    print "Record Type: %s" % record["type"]
-                    print "Record Content: %s" % record["content"]
-                    print "Record TTL: %d" % record["ttl"]
-                    print "---"
+                except Exception as e:
+                    print("Error: %s" % e.message)  # pylint: disable=no-member
+                    print("Record Name: %s" % record["name"])
+                    print("Record Type: %s" % record["type"])
+                    print("Record Content: %s" % record["content"])
+                    print("Record TTL: %d" % record["ttl"])
+                    print("---")
             result = zone.to_text()
         return result

@@ -13,7 +13,7 @@ class DeviceNameList(BaseAction):
             last_updated_gt=None, first_added_lt=None, first_added_gt=None,
             custom_fields_and=None, custom_fields_or=None
             ):
-        response = self.getAPI("/api/1.0/devices/", {
+        response = self.getAPI("devices/", {
             "type": type,
             "service_level": service_level,
             "in_service": in_service,
@@ -47,6 +47,7 @@ class DeviceNameList(BaseAction):
             "custom_fields_and": custom_fields_and,
             "custom_fields_or": custom_fields_or,
         })
+        print(response)
 
         names = []
         for device in response["Devices"]:
